@@ -1,37 +1,42 @@
 # Display Basics With Flexbox
 
-Being able to make elements of a page display where you want them to is an incredibly important aspect of the design and production of web apps. Back in the old days of the web, it wasn’t easy to play with how elements displayed relative to one another on a page - we had block elements and inline elements, and good luck getting them to do interesting things. Thankfully we’ve come a long way and introduced functionality like flexbox into CSS, which makes styling and arranging elements much easier.
+Being able to make elements of a page display where you want them to is an incredibly important aspect of the design and production of web apps. Back in the old days of the web, it wasn’t easy to play with how elements displayed relative to one another on a page; we had block elements and inline elements and could kind of use tables and floats to organize things, but good luck getting anything to do interesting stuff. Thankfully we’ve come a long way and introduced functionality like Flexbox into CSS, which makes organizing and arranging elements much easier.
 
 ## Display Block vs. Display Inline
 
-There are 2 main ways elements on the page are formatted for display - block and inline. Before getting into flexbox specifically, it’s important to understand the difference between these display types. As you can see below, block elements inherently take up the entire width of the container they’re in, forcing elements before and after onto new lines. Block elements can also be sized by giving specific values for the height and width.
+There are 2 main ways HTML elements are formatted for display -- block and inline. Before getting into Flexbox specifically, it’s important to understand the difference between these display types. As you can see below, block elements inherently take up the entire width of the container they’re in, forcing elements before and after onto new lines. Block elements can also be sized by giving specific values for the height and width.
 
 ![Block and Inline Block Elements](block-elements.png)
 
-But what's going on with those inline elements? The first thing to note is that Inline elements take up only the space of their content and cannot be given width or height values. Inline elements can be given padding and margin, but notice that the padding given to the inline element doesn't actually move it away from the above block element - the inline element simply pushes its padding over the block element. Also note that inline elements can only apply margin to the left and right because they can still stay in the flow of the line while moving things left and right.
+But what's going on with those inline elements? The first thing to note is that inline elements take up only the space of their content and you cannot apply width or height values to them. Inline elements can be given padding and margin, but notice that the padding given to the inline element doesn't change its vertical positioning - the inline element simply pushes its padding over the block element. Also note that inline elements can only apply margins to the left and right because they are still in the document flow.
 
-Inline block elements combine some features of both block elements and inline elements. Inline block elements can be given height, width, padding, and margin - all of which act like you would expect on a block element. The biggest difference here is that inline-block elements won't force items to a new line, so you can put multiple inline block elements next to eachother.
+Inline block elements combine some features of both block elements and inline elements. Inline block elements can be given height, width, padding, and margin - all of which act like you would expect from a block element. The biggest difference here is that inline-block elements won't force following elements to a new line, so you can put multiple inline block elements next to eachother.
+
+<https://codepen.io/btken88/pen/gOPmMPq>
+
+Before diving into Flexbox, I'd encourage you to play around with the codepen example above to see how changing aspects of block, inline, and inline-block elements changes their display.
 
 ## Flexbox Introduction
 
-### History of Flexbox
+### What is Flexbox
 
-The CSS Flexible Box Layout (AKA flexbox) was released with CSS3 as a way to solve many of the problems developers had with the contstraints on element positioning. Flexbox allows us to create flex containers to place elements in, and then dynamically adjust the layout of each container's children elements, also known as flex items. Containers and their elements can be adjusted responsively to adapt to different display sizes as well as different page renderings.
+The CSS Flexible Box Layout (AKA Flexbox) was released with CSS3 as a way to solve many of the problems developers had with the previously existing contstraints on element positioning. Flexbox allows us to create flex containers, place other elements inside, and then dynamically adjust the layout of each container's children elements, also known as flex items. Containers and their children move and resize responsively to adapt to different display sizes as well as different page renderings.
 
 ### Important Terminology
 
 - **Flex Container** – This is the parent element which holds flex items
   - ``display: flex`` - Creates a block style flex container
-  - ``dixplay: inline-flex`` - Creates an inline style flex container
+  - ``dixplay: inline-flex`` - Creates an inline-block style flex container
 - **Flex Item** – All direct children of a flex container. Note that flex items can be flex containers themselves, containing other flex elements.
-- **flex-direction** – Sets the **main flex axis** display style
+- **Flex-direction** – Sets the **main flex axis** display style
   - ``row, column, row-reverse, column-reverse``
 
 ![Flex Direction examples](flexdirection-examples.png)
 *As you can see, the flex direction controls not just in which direction the content flows, but also changes where the starting point is for elements to spawn. It's also going to be important to remember that the flex direction sets the main axis of movement, and that we will also have control over how elements behave along the cross axis*
 
 - **justify-content** – Sets how flex items are aligned/spaced along the **main axis** inside the container
-- **align-items** - Sets how flex items are aligned/spaced along the **cross axis** inside the container
+- **align-items** - Sets how flex items in a single line are aligned/spaced along the **cross axis** inside the container
+- **align-content** - Sets how flex items in multiple lines are  aligned/spaced along the **cross axis** inside the container
 - **flex-wrap** - Sets whether content is forced onto one line or is able to wrap onto multiple lines
 
 ## Flexbox 
@@ -48,7 +53,7 @@ As mentioned earlier, ``justify-content`` allows you to set how flex items are a
 
 ### Align Items
 
-The ``align-items`` setting allows you to control how content is spaced and aligned along the **cross axis**, or 90° from the axis set by ``flex-direction`` when items are in a single row. So if your ``flex-direction`` is set to row (flexing the content horizontally) ``align-items`` would set the **vertical** spacing and alignment. There are five values you can assign to ``justify-content``, and three are the same as ``justify-content``:
+The ``align-items`` setting allows you to control how content is spaced and aligned along the **cross axis**, or 90° from the axis set by ``flex-direction`` when items are in a single row. So if your ``flex-direction`` is set to row (flexing the content horizontally) ``align-items`` would set the **vertical** spacing and alignment. There are five values you can assign to ``align-items``:
 
 - ``flex-start`` - aligns items to the beginning of the flex container 90° from the axis set by ``flex-direction``
 - ``flex-end`` - aligns items to the end of the flex container 90° from the axis set by ``flex-direction``
@@ -58,7 +63,7 @@ The ``align-items`` setting allows you to control how content is spaced and alig
 
 ### Align Content
 
-While ``align-items`` is useful when the flex items live on a single row along the main axis, if the content displays across multiple lines, ``align-content`` will take care of arranging and spacing out those lines. There are six possible values for ``align-content``:
+While ``align-items`` is useful when the flex items live on a single line along the main axis, if the content displays across multiple lines, ``align-content`` will take care of arranging and spacing out those lines. There are six possible values for ``align-content``:
 
 - ``flex-start`` - aligns lines to the beginning of the flex container without space between
 - ``flex-end`` - aligns lines to the end of the flex container without space between
@@ -67,7 +72,7 @@ While ``align-items`` is useful when the flex items live on a single row along t
 - ``space-around`` - evenly spaces lines, but also leaves space between outer elements and the edge of the container
 - ``stretch`` - aligns the first line to the start of the container and adds even spacing **under** each line
 
-You can use the codepen.io example below to see how different values passed into ``justify-content`` and ``align-items`` or ``align-content`` will change the display.
+You can use the codepen example below to see how different values passed into ``justify-content`` and ``align-items`` or ``align-content`` will change the display.
 
 <https://codepen.io/btken88/pen/zYrNvLa>
 
@@ -108,3 +113,12 @@ The ``flex`` property is a shortcut you can use to assign multiple properties to
 - ``flex: flex-grow-value flex-shrink-value flex-basis-value``
 - Default values are ``flex: 0 1 auto``
 
+## Put it to use
+
+Now that you have a better understanding of the basics of Flexbox, I'd encourage you to start looking at how you can include Flexbox into the styling of your next project. Feel free to go back and play more with the Flexbox codepen example above using some of the additional flex options I've talked about. You'll find it makes dynamic presentation and styling much easier as it will do the work of shuffling and resizing elements for you based on the user's display.
+
+## Other Resources
+
+- A great poster with visual examples of everything discussed above can be found at [CSS Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+- [Flexbox Froggy](https://flexboxfroggy.com/) is a fun and easy game to help you get practice using Flexbox
+- [Flexbox Defense](http://www.flexboxdefense.com/)
