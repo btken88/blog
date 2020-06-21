@@ -10,7 +10,7 @@ There are 2 main ways HTML elements are formatted for display -- block and inlin
 
 But what's going on with those inline elements? The first thing to note is that inline elements take up only the space of their content and you cannot apply width or height values to them. Inline elements can be given padding and margin, but notice that the padding given to the inline element doesn't change its vertical positioning - the inline element simply pushes its padding over the block element. Also note that inline elements can only apply margins to the left and right because they are still in the document flow.
 
-Inline block elements combine some features of both block elements and inline elements. Inline block elements can be given height, width, padding, and margin - all of which act like you would expect from a block element. The biggest difference here is that inline-block elements won't force following elements to a new line, so you can put multiple inline block elements next to eachother.
+Inline block elements combine some features of both block elements and inline elements. Inline block elements can be given height, width, padding, and margin - all of which act like you would expect from a block element. The biggest difference here is that inline-block elements won't force following elements to a new line, so you can put multiple inline block elements next to each other.
 
 <https://codepen.io/btken88/pen/gOPmMPq>
 
@@ -20,13 +20,13 @@ Before diving into Flexbox, I'd encourage you to play around with the codepen ex
 
 ### What is Flexbox
 
-The CSS Flexible Box Layout (AKA Flexbox) was released with CSS3 as a way to solve many of the problems developers had with the previously existing contstraints on element positioning. Flexbox allows us to create flex containers, place other elements inside, and then dynamically adjust the layout of each container's children elements, also known as flex items. Containers and their children move and resize responsively to adapt to different display sizes as well as different page renderings.
+The CSS Flexible Box Layout (AKA Flexbox) was released with CSS3 as a way to solve many of the problems developers had with the previously existing constraints on element positioning. Flexbox allows us to create flex containers, place other elements inside, and then dynamically adjust the layout of each container's children elements, also known as flex items. Containers and their children move and resize responsively to adapt to different display sizes as well as different page renderings.
 
 ### Important Terminology
 
 - **Flex Container** – This is the parent element which holds flex items
   - ``display: flex`` - Creates a block style flex container
-  - ``dixplay: inline-flex`` - Creates an inline-block style flex container
+  - ``display: inline-flex`` - Creates an inline-block style flex container
 - **Flex Item** – All direct children of a flex container. Note that flex items can be flex containers themselves, containing other flex elements.
 - **Flex-direction** – Sets the **main flex axis** display style
   - ``row, column, row-reverse, column-reverse``
