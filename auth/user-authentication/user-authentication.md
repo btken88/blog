@@ -2,7 +2,7 @@
 
 ## Secure User Authentication using bcrypt
 
-When we create an app that is going to store information about different users, or as we begin to create proteected resources on our backend, it becomes espcially important to authenticate users with a username and password when they visit our app. We could easily just store that information directly in the backend and then call a GET request when a user logs in, but that wouldn't be secure or a very good practice in general. Instead, we POST login requests and use tools like bcrypt and JWT to store and compare user data. Below we'll go through the process of storing user login information and authenticating a user in a Rails API backend.
+When we create an app that is going to store information about different users, or as we begin to create protected resources on our backend, it becomes especially important to authenticate users with a username and password when they visit our app. We could easily just store that information directly in the backend and then call a GET request when a user logs in, but that wouldn't be secure or a very good practice in general. Instead, we POST login requests and use tools like bcrypt and JWT to store and compare user data. Below we'll go through the process of storing user login information and authenticating a user in a Rails API backend.
 
 ## Setting up the Rails API
 
@@ -24,4 +24,4 @@ These two things tells our Rails database "Hey - don't use the password the user
 
 That's it! We've now created a secure way of storing passwords in a Rails backend using bcrypt. In part two we'll look at how to use the secure password we've just created (along with JWT, tokens, and local storage) to log a user in and then check to make sure they're logged in before performing other actions.
 
-[^1]: In extrememly rare cases, a hash function can return the same number result for two different inputs. This is called a "hash collision," and one of the primary considerations for a hashing function is how easily there might be a collision.
+[^1]: In extremely rare cases, a hash function can return the same number result for two different inputs. This is called a "hash collision," and one of the primary considerations for a hashing function is how easily there might be a collision.
