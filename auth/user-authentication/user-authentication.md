@@ -10,7 +10,7 @@ To get started, we'll need to set up an API with `rails new --api your-api-name`
 
 ![bcrypt preinstalled in gemfile](bcrypt-gem.png)
 
-It should already be in your gemfile, and you can just uncomment it and run `bundle install` in your terminal. Bcrypt enables some secure hashing functionality in Rails which we will use to store a secure substitute for the user's password. [Cryptographic hashing](https://en.wikipedia.org/wiki/Cryptographic_hash_function) is an algorithmic, one-way transformation of information, resulting in a unique, fixed-length number[^1]. 
+It should already be in your gemfile, and you can just uncomment it and run `bundle install` in your terminal. Bcrypt enables some secure hashing functionality in Rails which we will use to store a secure substitute for the user's password. [Cryptographic hashing](https://en.wikipedia.org/wiki/Cryptographic_hash_function) is an algorithmic, one-way transformation of information, resulting in a unique, fixed-length number[^1].
 
 The TL;DR is that bcrypt takes the password string input, adds a little extra bit of information called "salt," chops everything up and mixes it around (like **hash** browns...), and then spits out a very random string of numbers (usually not base-10) which includes some information that lets bcrypt compare the hash with a later input. There is no way to figure out the initial input based on the hash result, which is why we can store the hash in our database without worrying about a hacker getting their hands on it. Good thing bcrypt takes care of hashing behind the scenes so we don't have to come up with our own hash function, huh?
 
@@ -25,6 +25,5 @@ These two things tell our Rails database "Hey, don't use the password the user s
 ## Up Next
 
 That's it! We've now created a secure way of storing passwords in a Rails backend using bcrypt. In part two we'll use the secure password we've just created to log a user in and use JWT, tokens, and local storage to make sure they're logged in and authorized before performing other actions.
-
 
 [^1]: In extremely rare cases, a hash function can return the same number result for two different inputs. This is called a "hash collision," and one of the primary considerations for a hashing function is how easily there might be a collision.

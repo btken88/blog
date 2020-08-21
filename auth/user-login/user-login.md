@@ -1,4 +1,4 @@
-# Auth^2 with Rails, Part 2
+# Auth with Rails, Part 2
 
 In my last blog post, I reviewed how we can use a Rails backend with the bcrypt gem to securely store passwords when users sign up. In this post, we'll talk about how we can store a user's information in browser localStorage using JSON Web Tokens (JWT) in order to both persist login information and later authorize a user for certain paths and actions.
 
